@@ -48,7 +48,7 @@ func (m *Metrics) GetExporter() http.Handler {
 }
 
 func (m *Metrics) GetMetricsProvider() metric.MeterProvider {
-	return sdk_metric.NewMeterProvider(sdk_metric.WithReader(m.Exporter))
+	return sdk_metric.NewMeterProvider()
 }
 
 func (m *Metrics) RegisterCounter(name, description string) error {
