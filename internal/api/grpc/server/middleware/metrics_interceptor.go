@@ -2,10 +2,13 @@ package middleware
 
 import (
 	"context"
+	"fmt"
 	"strings"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/zitadel/zitadel/internal/telemetry/metrics/otel"
 	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric/instrument"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 
@@ -22,6 +25,8 @@ const (
 	TotalGrpcRequestCounterDescription = "Total grpc request counter"
 	GrpcStatusCodeCounter              = "grpc.server.grpc_status_code"
 	GrpcStatusCodeCounterDescription   = "Grpc status code counter"
+	UserCounter = "user.counter"
+	UserCounterDescription = "Total count of users"
 )
 
 func MetricsHandler(metricTypes []metrics.MetricType, ignoredMethodSuffixes ...string) grpc.UnaryServerInterceptor {
@@ -77,6 +82,13 @@ func RegisterGrpcRequestCodeCounter(ctx context.Context, info *grpc.UnaryServerI
 	metrics.AddCount(ctx, GrpcStatusCodeCounter, 1, labels)
 }
 
+
+func RegisterUserCount(ctx context.Context) {
+	// metrics.RegisterUpDownSumObserver(UserCounter, UserCounterDescription, callbackFunction)
+	metrics.RegisterUsageCounter(UserCounter, UserCounterDescription)
+	metrics.AddCount(ctx, TotalGrpcRequestCounter, 1, nil)
+}
+
 func containsMetricsMethod(metricType metrics.MetricType, metricTypes []metrics.MetricType) bool {
 	for _, m := range metricTypes {
 		if m == metricType {
@@ -84,4 +96,8 @@ func containsMetricsMethod(metricType metrics.MetricType, metricTypes []metrics.
 		}
 	}
 	return false
+}
+
+func countUser(context.Context, observer string) error {
+	return fmt.Sprintf("%q", fn(123))
 }

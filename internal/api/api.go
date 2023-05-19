@@ -191,6 +191,7 @@ func (a *API) healthHandler() http.Handler {
 	handler.HandleFunc("/ready", handleReadiness(checks))
 	handler.HandleFunc("/validate", handleValidate(checks))
 	handler.Handle("/metrics", metricsExporter())
+	handler.Handle("/usage", usageExporter())
 
 	return handler
 }
@@ -237,6 +238,14 @@ func validate(ctx context.Context, validations []ValidationFunction) []error {
 
 func metricsExporter() http.Handler {
 	exporter := metrics.GetExporter()
+	if exporter == nil {
+		return http.NotFoundHandler()
+	}
+	return exporter
+}
+
+func usageExporter() http.Handler {
+	exporter := metrics.GetUsageExporter()
 	if exporter == nil {
 		return http.NotFoundHandler()
 	}
