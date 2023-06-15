@@ -69,7 +69,7 @@ func TestCommands_ClearFlow(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewTriggerActionsSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								domain.FlowTypeExternalAuthentication,
@@ -179,7 +179,7 @@ func TestCommands_SetTriggerActions(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewTriggerActionsSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								domain.FlowTypeExternalAuthentication,
@@ -228,7 +228,7 @@ func TestCommands_SetTriggerActions(t *testing.T) {
 				eventstore: eventstoreExpect(t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("action1", "org1").Aggregate,
 								"actionID1",

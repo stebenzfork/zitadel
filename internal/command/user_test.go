@@ -133,7 +133,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -166,7 +166,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -199,7 +199,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -232,7 +232,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -249,7 +249,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 					),
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -276,7 +276,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -293,7 +293,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 					),
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -330,7 +330,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -347,7 +347,7 @@ func TestCommandSide_UsernameChange(t *testing.T) {
 					),
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -458,7 +458,7 @@ func TestCommandSide_DeactivateUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -472,7 +472,7 @@ func TestCommandSide_DeactivateUser(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserDeactivatedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
@@ -495,7 +495,7 @@ func TestCommandSide_DeactivateUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -608,7 +608,7 @@ func TestCommandSide_ReactivateUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -640,7 +640,7 @@ func TestCommandSide_ReactivateUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -654,7 +654,7 @@ func TestCommandSide_ReactivateUser(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserDeactivatedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate),
 						),
@@ -757,7 +757,7 @@ func TestCommandSide_LockUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -771,7 +771,7 @@ func TestCommandSide_LockUser(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserLockedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
@@ -794,7 +794,7 @@ func TestCommandSide_LockUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -907,7 +907,7 @@ func TestCommandSide_UnlockUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -939,7 +939,7 @@ func TestCommandSide_UnlockUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -953,7 +953,7 @@ func TestCommandSide_UnlockUser(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserLockedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate),
 						),
@@ -1059,7 +1059,7 @@ func TestCommandSide_RemoveUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1093,7 +1093,7 @@ func TestCommandSide_RemoveUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1110,7 +1110,7 @@ func TestCommandSide_RemoveUser(t *testing.T) {
 					),
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1146,7 +1146,7 @@ func TestCommandSide_RemoveUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1160,7 +1160,7 @@ func TestCommandSide_RemoveUser(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserIDPLinkAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"idpConfigID",
@@ -1171,7 +1171,7 @@ func TestCommandSide_RemoveUser(t *testing.T) {
 					),
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1212,7 +1212,7 @@ func TestCommandSide_RemoveUser(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1229,7 +1229,7 @@ func TestCommandSide_RemoveUser(t *testing.T) {
 					),
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1448,7 +1448,7 @@ func TestCommands_RevokeAccessToken(t *testing.T) {
 			fields{
 				eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserTokenAddedEvent(context.Background(),
 								&user.NewAggregate("userID", "orgID").Aggregate,
 								"tokenID",
@@ -1480,7 +1480,7 @@ func TestCommands_RevokeAccessToken(t *testing.T) {
 			fields{
 				eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserTokenAddedEvent(context.Background(),
 								&user.NewAggregate("userID", "orgID").Aggregate,
 								"tokenID",
@@ -1591,7 +1591,7 @@ func TestCommandSide_UserDomainClaimedSent(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",

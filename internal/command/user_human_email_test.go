@@ -84,7 +84,7 @@ func TestCommandSide_ChangeHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -98,7 +98,7 @@ func TestCommandSide_ChangeHumanEmail(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanInitialCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								nil, time.Hour*1,
@@ -127,7 +127,7 @@ func TestCommandSide_ChangeHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -164,7 +164,7 @@ func TestCommandSide_ChangeHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -218,7 +218,7 @@ func TestCommandSide_ChangeHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -268,7 +268,7 @@ func TestCommandSide_ChangeHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -419,7 +419,7 @@ func TestCommandSide_VerifyHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -452,7 +452,7 @@ func TestCommandSide_VerifyHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -466,7 +466,7 @@ func TestCommandSide_VerifyHumanEmail(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -503,7 +503,7 @@ func TestCommandSide_VerifyHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -517,7 +517,7 @@ func TestCommandSide_VerifyHumanEmail(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanEmailCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -628,7 +628,7 @@ func TestCommandSide_CreateVerificationCodeHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -642,7 +642,7 @@ func TestCommandSide_CreateVerificationCodeHumanEmail(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanInitialCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								nil, time.Hour*1,
@@ -666,7 +666,7 @@ func TestCommandSide_CreateVerificationCodeHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -680,7 +680,7 @@ func TestCommandSide_CreateVerificationCodeHumanEmail(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
@@ -703,7 +703,7 @@ func TestCommandSide_CreateVerificationCodeHumanEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -717,12 +717,12 @@ func TestCommandSide_CreateVerificationCodeHumanEmail(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"email2@test.ch",
@@ -831,7 +831,7 @@ func TestCommandSide_EmailVerificationCodeSent(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -845,12 +845,12 @@ func TestCommandSide_EmailVerificationCodeSent(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"email2@test.ch",

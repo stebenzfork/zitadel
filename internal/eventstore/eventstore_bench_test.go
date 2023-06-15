@@ -5,6 +5,8 @@ import (
 	_ "embed"
 	"fmt"
 	"strconv"
+	"strings"
+	"sync/atomic"
 	"testing"
 
 	"github.com/zitadel/zitadel/internal/eventstore"
@@ -65,7 +67,7 @@ func Benchmark_Push_SameAggregate(b *testing.B) {
 		for pusherKey, store := range pushers {
 			b.Run(fmt.Sprintf("Benchmark_Push_SameAggregate-%s-%s", pusherKey, cmdsKey), func(b *testing.B) {
 				b.StopTimer()
-				cleanupEventstore()
+				cleanupEventstore(clients[pusherKey])
 				b.StartTimer()
 
 				for n := 0; n < b.N; n++ {
@@ -134,22 +136,24 @@ func Benchmark_Push_MultipleAggregate_Parallel(b *testing.B) {
 			}
 		},
 	}
-
 	for cmdsKey, commandCreator := range commandCreators {
 		for pusherKey, store := range pushers {
+			if strings.Contains(pusherKey, "v2") {
+				// v2 is not able to push parallel in the same instance
+				continue
+			}
 			b.Run(fmt.Sprintf("Benchmark_Push_DifferentAggregate-%s-%s", cmdsKey, pusherKey), func(b *testing.B) {
 				b.StopTimer()
-				cleanupEventstore()
+				cleanupEventstore(clients[pusherKey])
 
 				ctx, cancel := context.WithCancel(context.Background())
 				b.StartTimer()
 
-				i := 0
-
+				i := new(atomic.Int64)
 				b.RunParallel(func(p *testing.PB) {
 					for p.Next() {
-						i++
-						_, err := store.Push(ctx, commandCreator(strconv.Itoa(i))...)
+						id := i.Add(1)
+						_, err := store.Push(ctx, commandCreator(strconv.Itoa(int(id)))...)
 						if err != nil {
 							b.Error(err)
 						}

@@ -56,7 +56,7 @@ func TestCommandSide_AddSecretGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								domain.SecretGeneratorTypeInitCode,
@@ -204,7 +204,7 @@ func TestCommandSide_ChangeSecretGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -217,7 +217,7 @@ func TestCommandSide_ChangeSecretGenerator(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorRemovedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								domain.SecretGeneratorTypeInitCode),
@@ -239,7 +239,7 @@ func TestCommandSide_ChangeSecretGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -277,7 +277,7 @@ func TestCommandSide_ChangeSecretGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -397,7 +397,7 @@ func TestCommandSide_RemoveSecretGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -410,7 +410,7 @@ func TestCommandSide_RemoveSecretGenerator(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorRemovedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								domain.SecretGeneratorTypeInitCode),
@@ -432,7 +432,7 @@ func TestCommandSide_RemoveSecretGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,

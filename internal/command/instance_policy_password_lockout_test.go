@@ -40,7 +40,7 @@ func TestCommandSide_AddDefaultLockoutPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLockoutPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								10,
@@ -148,7 +148,7 @@ func TestCommandSide_ChangeDefaultLockoutPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLockoutPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								10,
@@ -175,7 +175,7 @@ func TestCommandSide_ChangeDefaultLockoutPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLockoutPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								10,

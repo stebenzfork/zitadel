@@ -57,7 +57,7 @@ func TestCommandSide_AddPasswordLockoutPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLockoutPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								10,
@@ -196,7 +196,7 @@ func TestCommandSide_ChangePasswordLockoutPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLockoutPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								10,
@@ -224,7 +224,7 @@ func TestCommandSide_ChangePasswordLockoutPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLockoutPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								10,
@@ -330,7 +330,7 @@ func TestCommandSide_RemovePasswordLockoutPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLockoutPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								10,

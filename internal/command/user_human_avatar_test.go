@@ -93,7 +93,7 @@ func TestCommandSide_AddHumanAvatar(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -134,7 +134,7 @@ func TestCommandSide_AddHumanAvatar(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -259,7 +259,7 @@ func TestCommandSide_RemoveHumanAvatar(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -273,7 +273,7 @@ func TestCommandSide_RemoveHumanAvatar(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAvatarAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"key",
@@ -299,7 +299,7 @@ func TestCommandSide_RemoveHumanAvatar(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -313,7 +313,7 @@ func TestCommandSide_RemoveHumanAvatar(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAvatarAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"key",

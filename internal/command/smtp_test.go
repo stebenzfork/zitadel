@@ -41,7 +41,7 @@ func TestCommandSide_AddSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true,
@@ -75,20 +75,20 @@ func TestCommandSide_AddSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true, true, false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMTPConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true,
@@ -125,14 +125,14 @@ func TestCommandSide_AddSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true, true, false,
@@ -228,14 +228,14 @@ func TestCommandSide_AddSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true, true, false,
@@ -365,20 +365,20 @@ func TestCommandSide_ChangeSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true, true, true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMTPConfigAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -415,20 +415,20 @@ func TestCommandSide_ChangeSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true, true, true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMTPConfigAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -465,20 +465,20 @@ func TestCommandSide_ChangeSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true, true, true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMTPConfigAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -571,20 +571,20 @@ func TestCommandSide_ChangeSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true, true, true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMTPConfigAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -688,7 +688,7 @@ func TestCommandSide_ChangeSMTPConfigPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMTPConfigAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -786,7 +786,7 @@ func TestCommandSide_RemoveSMTPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMTPConfigAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,

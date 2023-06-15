@@ -53,7 +53,7 @@ func TestCommandSide_AddDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -211,7 +211,7 @@ func TestCommandSide_ChangeDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -256,7 +256,7 @@ func TestCommandSide_ChangeDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -385,7 +385,7 @@ func TestCommandSide_ActivateDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -486,7 +486,7 @@ func TestCommandSide_AddLogoDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -527,7 +527,7 @@ func TestCommandSide_AddLogoDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -631,7 +631,7 @@ func TestCommandSide_RemoveLogoDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -647,7 +647,7 @@ func TestCommandSide_RemoveLogoDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyLogoAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",
@@ -670,7 +670,7 @@ func TestCommandSide_RemoveLogoDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -686,7 +686,7 @@ func TestCommandSide_RemoveLogoDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyLogoAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",
@@ -779,7 +779,7 @@ func TestCommandSide_AddIconDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -820,7 +820,7 @@ func TestCommandSide_AddIconDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -924,7 +924,7 @@ func TestCommandSide_RemoveIconDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -940,7 +940,7 @@ func TestCommandSide_RemoveIconDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyIconAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",
@@ -1035,7 +1035,7 @@ func TestCommandSide_AddLogoDarkDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1077,7 +1077,7 @@ func TestCommandSide_AddLogoDarkDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1181,7 +1181,7 @@ func TestCommandSide_RemoveLogoDarkDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1197,7 +1197,7 @@ func TestCommandSide_RemoveLogoDarkDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyLogoDarkAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",
@@ -1220,7 +1220,7 @@ func TestCommandSide_RemoveLogoDarkDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1236,7 +1236,7 @@ func TestCommandSide_RemoveLogoDarkDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyLogoDarkAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",
@@ -1329,7 +1329,7 @@ func TestCommandSide_AddIconDarkDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1370,7 +1370,7 @@ func TestCommandSide_AddIconDarkDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1474,7 +1474,7 @@ func TestCommandSide_RemoveIconDarkDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1490,7 +1490,7 @@ func TestCommandSide_RemoveIconDarkDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyIconDarkAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",
@@ -1513,7 +1513,7 @@ func TestCommandSide_RemoveIconDarkDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1529,7 +1529,7 @@ func TestCommandSide_RemoveIconDarkDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyIconDarkAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",
@@ -1622,7 +1622,7 @@ func TestCommandSide_AddFontDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1663,7 +1663,7 @@ func TestCommandSide_AddFontDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1767,7 +1767,7 @@ func TestCommandSide_RemoveFontDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1783,7 +1783,7 @@ func TestCommandSide_RemoveFontDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyFontAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",
@@ -1806,7 +1806,7 @@ func TestCommandSide_RemoveFontDefaultLabelPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"#ffffff",
@@ -1822,7 +1822,7 @@ func TestCommandSide_RemoveFontDefaultLabelPolicy(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewLabelPolicyFontAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"key",

@@ -60,7 +60,7 @@ func TestCommandSide_SetOrgMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -86,7 +86,7 @@ func TestCommandSide_SetOrgMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -204,7 +204,7 @@ func TestCommandSide_BulkSetOrgMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -231,7 +231,7 @@ func TestCommandSide_BulkSetOrgMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -346,7 +346,7 @@ func TestCommandSide_OrgRemoveMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -371,7 +371,7 @@ func TestCommandSide_OrgRemoveMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -379,7 +379,7 @@ func TestCommandSide_OrgRemoveMetadata(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMetadataSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"key",
@@ -485,7 +485,7 @@ func TestCommandSide_BulkRemoveOrgMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -493,7 +493,7 @@ func TestCommandSide_BulkRemoveOrgMetadata(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMetadataSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"key",
@@ -518,7 +518,7 @@ func TestCommandSide_BulkRemoveOrgMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -526,14 +526,14 @@ func TestCommandSide_BulkRemoveOrgMetadata(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMetadataSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"key",
 								[]byte("value"),
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMetadataSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"key1",
@@ -558,7 +558,7 @@ func TestCommandSide_BulkRemoveOrgMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"ZITADEL",
@@ -566,14 +566,14 @@ func TestCommandSide_BulkRemoveOrgMetadata(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMetadataSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"key",
 								[]byte("value"),
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMetadataSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"key1",

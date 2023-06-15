@@ -63,7 +63,7 @@ func TestCommandSide_ChangeHumanAddress(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -77,7 +77,7 @@ func TestCommandSide_ChangeHumanAddress(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							newAddressChangedEvent(context.Background(),
 								"user1", "org1",
 								"country",
@@ -114,7 +114,7 @@ func TestCommandSide_ChangeHumanAddress(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",

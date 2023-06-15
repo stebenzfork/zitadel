@@ -79,7 +79,7 @@ func Test_newCryptoCode(t *testing.T) {
 		{
 			name: "success",
 			eventstore: eventstoreExpect(t, expectFilter(
-				eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
+				eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
 			)),
 			args: args{
 				typ: domain.SecretGeneratorTypeVerifyEmailCode,
@@ -103,7 +103,7 @@ func Test_newCryptoCode(t *testing.T) {
 
 func Test_verifyCryptoCode(t *testing.T) {
 	es := eventstoreExpect(t, expectFilter(
-		eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
+		eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
 	))
 	code, err := newCryptoCodeWithExpiry(context.Background(), es.Filter, domain.SecretGeneratorTypeVerifyEmailCode, crypto.CreateMockHashAlg(gomock.NewController(t)))
 	require.NoError(t, err)
@@ -136,7 +136,7 @@ func Test_verifyCryptoCode(t *testing.T) {
 		{
 			name: "success",
 			eventsore: eventstoreExpect(t, expectFilter(
-				eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
+				eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
 			)),
 			args: args{
 				typ:     domain.SecretGeneratorTypeVerifyEmailCode,
@@ -149,7 +149,7 @@ func Test_verifyCryptoCode(t *testing.T) {
 		{
 			name: "wrong plain",
 			eventsore: eventstoreExpect(t, expectFilter(
-				eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
+				eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
 			)),
 			args: args{
 				typ:     domain.SecretGeneratorTypeVerifyEmailCode,
@@ -198,7 +198,7 @@ func Test_secretGenerator(t *testing.T) {
 		{
 			name: "hash generator",
 			eventsore: eventstoreExpect(t, expectFilter(
-				eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
+				eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
 			)),
 			args: args{
 				typ: domain.SecretGeneratorTypeVerifyEmailCode,
@@ -210,7 +210,7 @@ func Test_secretGenerator(t *testing.T) {
 		{
 			name: "encryption generator",
 			eventsore: eventstoreExpect(t, expectFilter(
-				eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
+				eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
 			)),
 			args: args{
 				typ: domain.SecretGeneratorTypeVerifyEmailCode,
@@ -222,7 +222,7 @@ func Test_secretGenerator(t *testing.T) {
 		{
 			name: "unsupported type",
 			eventsore: eventstoreExpect(t, expectFilter(
-				eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
+				eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypeVerifyEmailCode)),
 			)),
 			args: args{
 				typ: domain.SecretGeneratorTypeVerifyEmailCode,

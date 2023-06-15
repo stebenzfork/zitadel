@@ -255,7 +255,7 @@ func TestCommandSide_AddOIDCApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -285,7 +285,7 @@ func TestCommandSide_AddOIDCApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -524,14 +524,14 @@ func TestCommandSide_ChangeOIDCApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewOIDCConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								domain.OIDCVersionV1,
@@ -598,14 +598,14 @@ func TestCommandSide_ChangeOIDCApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewOIDCConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								domain.OIDCVersionV1,
@@ -795,14 +795,14 @@ func TestCommandSide_ChangeOIDCApplicationSecret(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewOIDCConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								domain.OIDCVersionV1,

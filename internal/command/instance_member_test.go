@@ -94,7 +94,7 @@ func TestCommandSide_AddIAMMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -110,7 +110,7 @@ func TestCommandSide_AddIAMMember(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewMemberAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"user1",
@@ -139,7 +139,7 @@ func TestCommandSide_AddIAMMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -336,7 +336,7 @@ func TestCommandSide_ChangeIAMMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewMemberAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"user1",
@@ -368,7 +368,7 @@ func TestCommandSide_ChangeIAMMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewMemberAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"user1",
@@ -489,7 +489,7 @@ func TestCommandSide_RemoveIAMMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewMemberAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"user1",

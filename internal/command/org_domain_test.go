@@ -317,13 +317,13 @@ func TestCommandSide_AddOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -347,7 +347,7 @@ func TestCommandSide_AddOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
@@ -355,7 +355,7 @@ func TestCommandSide_AddOrgDomain(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -485,7 +485,7 @@ func TestCommandSide_GenerateOrgDomainValidation(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
@@ -514,19 +514,19 @@ func TestCommandSide_GenerateOrgDomainValidation(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -555,13 +555,13 @@ func TestCommandSide_GenerateOrgDomainValidation(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -605,13 +605,13 @@ func TestCommandSide_GenerateOrgDomainValidation(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -736,7 +736,7 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
@@ -765,19 +765,19 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -806,13 +806,13 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -841,19 +841,19 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerificationAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -897,19 +897,19 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerificationAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -955,19 +955,19 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerificationAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -1015,19 +1015,19 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerificationAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -1042,7 +1042,7 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org2").Aggregate,
 								"username@domain.ch",
@@ -1058,7 +1058,7 @@ func TestCommandSide_ValidateOrgDomain(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								false, false, false))),
@@ -1180,7 +1180,7 @@ func TestCommandSide_SetPrimaryDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
@@ -1209,13 +1209,13 @@ func TestCommandSide_SetPrimaryDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -1243,19 +1243,19 @@ func TestCommandSide_SetPrimaryDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -1365,7 +1365,7 @@ func TestCommandSide_RemoveOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
@@ -1394,25 +1394,25 @@ func TestCommandSide_RemoveOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPrimarySetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -1440,13 +1440,13 @@ func TestCommandSide_RemoveOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
@@ -1482,19 +1482,19 @@ func TestCommandSide_RemoveOrgDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"name",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"domain.ch",

@@ -96,7 +96,7 @@ func TestCommandSide_ChangeIDPOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -106,7 +106,7 @@ func TestCommandSide_ChangeIDPOIDCConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"clientid1",
@@ -125,7 +125,7 @@ func TestCommandSide_ChangeIDPOIDCConfig(t *testing.T) {
 								"scope",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigRemovedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -152,7 +152,7 @@ func TestCommandSide_ChangeIDPOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -162,7 +162,7 @@ func TestCommandSide_ChangeIDPOIDCConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"clientid1",
@@ -209,7 +209,7 @@ func TestCommandSide_ChangeIDPOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -219,7 +219,7 @@ func TestCommandSide_ChangeIDPOIDCConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"clientid1",

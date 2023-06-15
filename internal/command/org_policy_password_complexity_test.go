@@ -60,7 +60,7 @@ func TestCommandSide_AddPasswordComplexityPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								8,
@@ -214,7 +214,7 @@ func TestCommandSide_ChangePasswordComplexityPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								8,
@@ -245,7 +245,7 @@ func TestCommandSide_ChangePasswordComplexityPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								8,
@@ -357,7 +357,7 @@ func TestCommandSide_RemovePasswordComplexityPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								8,

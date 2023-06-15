@@ -76,7 +76,7 @@ func TestCommands_RegisterUserPasskey(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(), // getHumanPasswordlessTokens
-					expectFilter(eventFromEventPusher(
+					expectFilter(eventFromCommand(
 						user.NewHumanAddedEvent(ctx,
 							userAgg,
 							"username",
@@ -90,13 +90,13 @@ func TestCommands_RegisterUserPasskey(t *testing.T) {
 							true,
 						),
 					)),
-					expectFilter(eventFromEventPusher(
+					expectFilter(eventFromCommand(
 						org.NewOrgAddedEvent(ctx,
 							&org.NewAggregate("org1").Aggregate,
 							"org1",
 						),
 					)),
-					expectFilter(eventFromEventPusher(
+					expectFilter(eventFromCommand(
 						org.NewDomainPolicyAddedEvent(ctx,
 							&org.NewAggregate("org1").Aggregate,
 							false, false, false,
@@ -135,7 +135,7 @@ func TestCommands_RegisterUserPasskeyWithCode(t *testing.T) {
 	}
 	alg := crypto.CreateMockEncryptionAlg(gomock.NewController(t))
 	es := eventstoreExpect(t,
-		expectFilter(eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
+		expectFilter(eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
 	)
 	code, err := newCryptoCodeWithExpiry(ctx, es.Filter, domain.SecretGeneratorTypePasswordlessInitCode, alg)
 	require.NoError(t, err)
@@ -162,16 +162,16 @@ func TestCommands_RegisterUserPasskeyWithCode(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordlessInitCodeRequestedEvent(context.Background(),
 								userAgg, "123", code.Crypted, time.Minute, "", false,
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordlessInitCodeSentEvent(ctx, userAgg, "123"),
 						),
 					),
-					expectFilter(eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
+					expectFilter(eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
 					expectPush(
 						user.NewHumanPasswordlessInitCodeCheckFailedEvent(ctx, userAgg, "123"),
 					),
@@ -191,16 +191,16 @@ func TestCommands_RegisterUserPasskeyWithCode(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordlessInitCodeRequestedEvent(context.Background(),
 								userAgg, "123", code.Crypted, time.Minute, "", false,
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordlessInitCodeSentEvent(ctx, userAgg, "123"),
 						),
 					),
-					expectFilter(eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
+					expectFilter(eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
 					expectFilterError(io.ErrClosedPipe),
 				),
 			},
@@ -232,7 +232,7 @@ func TestCommands_verifyUserPasskeyCode(t *testing.T) {
 	ctx := authz.WithRequestedDomain(context.Background(), "example.com")
 	alg := crypto.CreateMockEncryptionAlg(gomock.NewController(t))
 	es := eventstoreExpect(t,
-		expectFilter(eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
+		expectFilter(eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
 	)
 	code, err := newCryptoCodeWithExpiry(ctx, es.Filter, domain.SecretGeneratorTypePasswordlessInitCode, alg)
 	require.NoError(t, err)
@@ -273,16 +273,16 @@ func TestCommands_verifyUserPasskeyCode(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordlessInitCodeRequestedEvent(context.Background(),
 								userAgg, "123", code.Crypted, time.Minute, "", false,
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordlessInitCodeSentEvent(ctx, userAgg, "123"),
 						),
 					),
-					expectFilter(eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
+					expectFilter(eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
 					expectPush(
 						user.NewHumanPasswordlessInitCodeCheckFailedEvent(ctx, userAgg, "123"),
 					),
@@ -301,16 +301,16 @@ func TestCommands_verifyUserPasskeyCode(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordlessInitCodeRequestedEvent(context.Background(),
 								userAgg, "123", code.Crypted, time.Minute, "", false,
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordlessInitCodeSentEvent(ctx, userAgg, "123"),
 						),
 					),
-					expectFilter(eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
+					expectFilter(eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
 				),
 			},
 			args: args{
@@ -346,7 +346,7 @@ func TestCommands_pushUserPasskey(t *testing.T) {
 
 	prep := []expect{
 		expectFilter(), // getHumanPasswordlessTokens
-		expectFilter(eventFromEventPusher(
+		expectFilter(eventFromCommand(
 			user.NewHumanAddedEvent(ctx,
 				userAgg,
 				"username",
@@ -360,19 +360,19 @@ func TestCommands_pushUserPasskey(t *testing.T) {
 				true,
 			),
 		)),
-		expectFilter(eventFromEventPusher(
+		expectFilter(eventFromCommand(
 			org.NewOrgAddedEvent(ctx,
 				&org.NewAggregate("org1").Aggregate,
 				"org1",
 			),
 		)),
-		expectFilter(eventFromEventPusher(
+		expectFilter(eventFromCommand(
 			org.NewDomainPolicyAddedEvent(ctx,
 				&org.NewAggregate("org1").Aggregate,
 				false, false, false,
 			),
 		)),
-		expectFilter(eventFromEventPusher(
+		expectFilter(eventFromCommand(
 			user.NewHumanWebAuthNAddedEvent(eventstore.NewBaseEventForPush(
 				ctx, &org.NewAggregate("org1").Aggregate, user.HumanPasswordlessTokenAddedType,
 			), "111", "challenge"),
@@ -488,7 +488,7 @@ func TestCommands_AddUserPasskeyCode(t *testing.T) {
 			fields: fields{
 				newCode: mockCode("passkey1", time.Minute),
 				eventstore: eventstoreExpect(t,
-					expectFilter(eventFromEventPusher(
+					expectFilter(eventFromCommand(
 						user.NewHumanAddedEvent(context.Background(),
 							userAgg,
 							"username",
@@ -592,7 +592,7 @@ func TestCommands_AddUserPasskeyCodeURLTemplate(t *testing.T) {
 			fields: fields{
 				newCode: mockCode("passkey1", time.Minute),
 				eventstore: eventstoreExpect(t,
-					expectFilter(eventFromEventPusher(
+					expectFilter(eventFromCommand(
 						user.NewHumanAddedEvent(context.Background(),
 							userAgg,
 							"username",
@@ -684,7 +684,7 @@ func TestCommands_AddUserPasskeyCodeReturn(t *testing.T) {
 			fields: fields{
 				newCode: mockCode("passkey1", time.Minute),
 				eventstore: eventstoreExpect(t,
-					expectFilter(eventFromEventPusher(
+					expectFilter(eventFromCommand(
 						user.NewHumanAddedEvent(context.Background(),
 							userAgg,
 							"username",
@@ -789,7 +789,7 @@ func TestCommands_addUserPasskeyCode(t *testing.T) {
 			fields: fields{
 				newCode: newCryptoCodeWithExpiry,
 				eventstore: eventstoreExpect(t,
-					expectFilter(eventFromEventPusher(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
+					expectFilter(eventFromCommand(testSecretGeneratorAddedEvent(domain.SecretGeneratorTypePasswordlessInitCode))),
 					expectFilterError(io.ErrClosedPipe),
 				),
 				idGenerator: id_mock.NewIDGeneratorExpectIDs(t, "123"),
@@ -805,7 +805,7 @@ func TestCommands_addUserPasskeyCode(t *testing.T) {
 			fields: fields{
 				newCode: mockCode("passkey1", time.Minute),
 				eventstore: eventstoreExpect(t,
-					expectFilter(eventFromEventPusher(
+					expectFilter(eventFromCommand(
 						user.NewHumanAddedEvent(context.Background(),
 							userAgg,
 							"username",
@@ -844,7 +844,7 @@ func TestCommands_addUserPasskeyCode(t *testing.T) {
 			fields: fields{
 				newCode: mockCode("passkey1", time.Minute),
 				eventstore: eventstoreExpect(t,
-					expectFilter(eventFromEventPusher(
+					expectFilter(eventFromCommand(
 						user.NewHumanAddedEvent(context.Background(),
 							userAgg,
 							"username",

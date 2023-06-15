@@ -109,7 +109,7 @@ func TestCommandSide_AddMachine(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -256,7 +256,7 @@ func TestCommandSide_ChangeMachine(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -291,7 +291,7 @@ func TestCommandSide_ChangeMachine(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",

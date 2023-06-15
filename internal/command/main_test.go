@@ -107,7 +107,7 @@ func expectFilterOrgMemberNotFound() expect {
 	}
 }
 
-func eventFromEventPusher(event eventstore.Command) *repository.Event {
+func eventFromCommand(event eventstore.Command) eventstore.Event {
 	data, _ := eventstore.EventData(event)
 	return &repository.Event{
 		InstanceID:                    event.Aggregate().InstanceID,
@@ -147,9 +147,9 @@ func eventFromEventPusherWithInstanceID(instanceID string, event eventstore.Comm
 	}
 }
 
-func eventFromEventPusherWithCreationDateNow(event eventstore.Command) *repository.Event {
-	e := eventFromEventPusher(event)
-	e.CreationDate = time.Now()
+func eventFromCommandWithCreationDateNow(event eventstore.Command) eventstore.Event {
+	e := eventFromCommand(event)
+	e.(*repository.Event).CreationDate = time.Now()
 	return e
 }
 

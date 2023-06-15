@@ -68,14 +68,14 @@ func TestCommandSide_UpdateInstance(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewInstanceAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"INSTANCE",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewInstanceRemovedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"INSTANCE",
@@ -99,7 +99,7 @@ func TestCommandSide_UpdateInstance(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewInstanceAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -209,14 +209,14 @@ func TestCommandSide_RemoveInstance(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewInstanceAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"INSTANCE",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewInstanceRemovedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"INSTANCE",

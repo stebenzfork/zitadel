@@ -57,7 +57,7 @@ func TestCommandSide_AddPasswordAgePolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordAgePolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								365,
@@ -196,7 +196,7 @@ func TestCommandSide_ChangePasswordAgePolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordAgePolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								10,
@@ -224,7 +224,7 @@ func TestCommandSide_ChangePasswordAgePolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordAgePolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								10,
@@ -330,7 +330,7 @@ func TestCommandSide_RemovePasswordAgePolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordAgePolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								10,

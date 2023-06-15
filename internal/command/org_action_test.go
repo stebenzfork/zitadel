@@ -198,7 +198,7 @@ func TestCommands_ChangeAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",
@@ -230,7 +230,7 @@ func TestCommands_ChangeAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",
@@ -275,7 +275,7 @@ func TestCommands_ChangeAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",
@@ -390,7 +390,7 @@ func TestCommands_DeactivateAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",
@@ -399,7 +399,7 @@ func TestCommands_DeactivateAction(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewDeactivatedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 							),
@@ -421,7 +421,7 @@ func TestCommands_DeactivateAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",
@@ -523,7 +523,7 @@ func TestCommands_ReactivateAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",
@@ -549,7 +549,7 @@ func TestCommands_ReactivateAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",
@@ -558,7 +558,7 @@ func TestCommands_ReactivateAction(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewDeactivatedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 							),
@@ -657,7 +657,7 @@ func TestCommands_DeleteAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",
@@ -691,7 +691,7 @@ func TestCommands_DeleteAction(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							action.NewAddedEvent(context.Background(),
 								&action.NewAggregate("id1", "org1").Aggregate,
 								"name",

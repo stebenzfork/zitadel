@@ -209,7 +209,7 @@ func TestCommandSide_AddAPIApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -239,7 +239,7 @@ func TestCommandSide_AddAPIApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -300,7 +300,7 @@ func TestCommandSide_AddAPIApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -463,14 +463,14 @@ func TestCommandSide_ChangeAPIApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewAPIConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -503,14 +503,14 @@ func TestCommandSide_ChangeAPIApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewAPIConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -657,14 +657,14 @@ func TestCommandSide_ChangeAPIApplicationSecret(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewAPIConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",

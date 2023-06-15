@@ -63,7 +63,7 @@ func TestCommandSide_SetUserMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -98,7 +98,7 @@ func TestCommandSide_SetUserMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -228,7 +228,7 @@ func TestCommandSide_BulkSetUserMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -264,7 +264,7 @@ func TestCommandSide_BulkSetUserMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -391,7 +391,7 @@ func TestCommandSide_UserRemoveMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -425,7 +425,7 @@ func TestCommandSide_UserRemoveMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -441,7 +441,7 @@ func TestCommandSide_UserRemoveMetadata(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMetadataSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"key",
@@ -551,7 +551,7 @@ func TestCommandSide_BulkRemoveUserMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -567,7 +567,7 @@ func TestCommandSide_BulkRemoveUserMetadata(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMetadataSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"key",
@@ -593,7 +593,7 @@ func TestCommandSide_BulkRemoveUserMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -609,14 +609,14 @@ func TestCommandSide_BulkRemoveUserMetadata(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMetadataSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"key",
 								[]byte("value"),
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMetadataSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"key1",
@@ -642,7 +642,7 @@ func TestCommandSide_BulkRemoveUserMetadata(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -658,14 +658,14 @@ func TestCommandSide_BulkRemoveUserMetadata(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMetadataSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"key",
 								[]byte("value"),
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMetadataSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"key1",

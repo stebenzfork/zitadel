@@ -77,7 +77,7 @@ func TestCommandSide_SetOneTimePassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -91,14 +91,14 @@ func TestCommandSide_SetOneTimePassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -144,7 +144,7 @@ func TestCommandSide_SetOneTimePassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -158,14 +158,14 @@ func TestCommandSide_SetOneTimePassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -305,7 +305,7 @@ func TestCommandSide_SetPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -339,7 +339,7 @@ func TestCommandSide_SetPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -353,7 +353,7 @@ func TestCommandSide_SetPassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPasswordCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -387,7 +387,7 @@ func TestCommandSide_SetPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -401,12 +401,12 @@ func TestCommandSide_SetPassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPasswordCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -421,7 +421,7 @@ func TestCommandSide_SetPassword(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -579,7 +579,7 @@ func TestCommandSide_ChangePassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -614,7 +614,7 @@ func TestCommandSide_ChangePassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -628,12 +628,12 @@ func TestCommandSide_ChangePassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPasswordChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -665,7 +665,7 @@ func TestCommandSide_ChangePassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -679,12 +679,12 @@ func TestCommandSide_ChangePassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPasswordChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -697,7 +697,7 @@ func TestCommandSide_ChangePassword(t *testing.T) {
 								"")),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -817,7 +817,7 @@ func TestCommandSide_RequestSetPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -831,19 +831,19 @@ func TestCommandSide_RequestSetPassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanInitialCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								nil, time.Hour*1,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+411234567",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
@@ -866,7 +866,7 @@ func TestCommandSide_RequestSetPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -880,12 +880,12 @@ func TestCommandSide_RequestSetPassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanInitializedCheckSucceededEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate)),
 					),
@@ -992,7 +992,7 @@ func TestCommandSide_PasswordCodeSent(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1006,7 +1006,7 @@ func TestCommandSide_PasswordCodeSent(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+411234567",
@@ -1123,7 +1123,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -1163,7 +1163,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -1204,7 +1204,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -1227,7 +1227,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1261,7 +1261,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -1284,7 +1284,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1298,12 +1298,12 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPasswordChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -1348,7 +1348,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -1371,7 +1371,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1385,12 +1385,12 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPasswordChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -1440,7 +1440,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -1463,7 +1463,7 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1477,12 +1477,12 @@ func TestCommandSide_CheckPassword(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPasswordChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{

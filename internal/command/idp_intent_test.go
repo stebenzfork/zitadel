@@ -142,7 +142,7 @@ func TestCommands_CreateIntent(t *testing.T) {
 					expectFilter(),
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewOAuthIDPAddedEvent(context.Background(), &instance.NewAggregate("ro").Aggregate,
 								"idp",
 								"name",

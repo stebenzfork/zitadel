@@ -255,7 +255,7 @@ func TestCommandSide_ChangeDefaultIDPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -265,7 +265,7 @@ func TestCommandSide_ChangeDefaultIDPConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"clientid1",

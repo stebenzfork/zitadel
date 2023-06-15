@@ -42,7 +42,7 @@ func TestCommands_ChangeUserEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -51,7 +51,7 @@ func TestCommands_ChangeUserEmail(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -82,7 +82,7 @@ func TestCommands_ChangeUserEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -91,7 +91,7 @@ func TestCommands_ChangeUserEmail(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -122,7 +122,7 @@ func TestCommands_ChangeUserEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -131,7 +131,7 @@ func TestCommands_ChangeUserEmail(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -206,7 +206,7 @@ func TestCommands_ChangeUserEmailURLTemplate(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -215,7 +215,7 @@ func TestCommands_ChangeUserEmailURLTemplate(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -247,7 +247,7 @@ func TestCommands_ChangeUserEmailURLTemplate(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -256,7 +256,7 @@ func TestCommands_ChangeUserEmailURLTemplate(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -318,7 +318,7 @@ func TestCommands_ChangeUserEmailReturnCode(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -327,7 +327,7 @@ func TestCommands_ChangeUserEmailReturnCode(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -358,7 +358,7 @@ func TestCommands_ChangeUserEmailReturnCode(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -367,7 +367,7 @@ func TestCommands_ChangeUserEmailReturnCode(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -442,7 +442,7 @@ func TestCommands_ChangeUserEmailVerified(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -473,7 +473,7 @@ func TestCommands_ChangeUserEmailVerified(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -504,7 +504,7 @@ func TestCommands_ChangeUserEmailVerified(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -598,7 +598,7 @@ func TestCommands_changeUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -631,7 +631,7 @@ func TestCommands_changeUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -664,7 +664,7 @@ func TestCommands_changeUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -697,7 +697,7 @@ func TestCommands_changeUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -754,7 +754,7 @@ func TestCommands_changeUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -812,7 +812,7 @@ func TestCommands_changeUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -898,7 +898,7 @@ func TestCommands_VerifyUserEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -921,7 +921,7 @@ func TestCommands_VerifyUserEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -930,7 +930,7 @@ func TestCommands_VerifyUserEmail(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -960,7 +960,7 @@ func TestCommands_VerifyUserEmail(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(context.Background(),
 								&instance.NewAggregate("inst1").Aggregate,
 								domain.SecretGeneratorTypeVerifyEmailCode,
@@ -969,7 +969,7 @@ func TestCommands_VerifyUserEmail(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -983,7 +983,7 @@ func TestCommands_VerifyUserEmail(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailCodeAddedEventV2(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -1058,7 +1058,7 @@ func TestCommands_verifyUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1088,7 +1088,7 @@ func TestCommands_verifyUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1102,7 +1102,7 @@ func TestCommands_verifyUserEmailWithGenerator(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanEmailCodeAddedEventV2(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -1136,7 +1136,7 @@ func TestCommands_verifyUserEmailWithGenerator(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1150,7 +1150,7 @@ func TestCommands_verifyUserEmailWithGenerator(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanEmailCodeAddedEventV2(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -1235,7 +1235,7 @@ func TestCommands_NewUserEmailEvents(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -1249,7 +1249,7 @@ func TestCommands_NewUserEmailEvents(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanInitialCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								nil, time.Hour*1,

@@ -56,7 +56,7 @@ func TestCommandSide_AddMailTemplate(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMailTemplateAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								[]byte("template"),
@@ -188,7 +188,7 @@ func TestCommandSide_ChangeMailTemplate(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMailTemplateAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								[]byte("template"),
@@ -214,7 +214,7 @@ func TestCommandSide_ChangeMailTemplate(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMailTemplateAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								[]byte("template"),
@@ -317,7 +317,7 @@ func TestCommandSide_RemoveMailTemplate(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMailTemplateAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								[]byte("template"),

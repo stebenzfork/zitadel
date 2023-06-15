@@ -79,7 +79,7 @@ func TestCommandSide_BulkAddUserIDPLinks(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(
 								context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
@@ -121,7 +121,7 @@ func TestCommandSide_BulkAddUserIDPLinks(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(
 								context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
@@ -163,7 +163,7 @@ func TestCommandSide_BulkAddUserIDPLinks(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(
 								context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
@@ -207,7 +207,7 @@ func TestCommandSide_BulkAddUserIDPLinks(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(
 								context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
@@ -224,7 +224,7 @@ func TestCommandSide_BulkAddUserIDPLinks(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -268,7 +268,7 @@ func TestCommandSide_BulkAddUserIDPLinks(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(
 								context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
@@ -286,7 +286,7 @@ func TestCommandSide_BulkAddUserIDPLinks(t *testing.T) {
 					),
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -404,7 +404,7 @@ func TestCommandSide_RemoveUserIDPLink(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserIDPLinkAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"config1",
@@ -412,7 +412,7 @@ func TestCommandSide_RemoveUserIDPLink(t *testing.T) {
 								"externaluser1",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserRemovedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -465,7 +465,7 @@ func TestCommandSide_RemoveUserIDPLink(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserIDPLinkAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"config1",
@@ -560,7 +560,7 @@ func TestCommandSide_ExternalLoginCheck(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserIDPLinkAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"config1",
@@ -568,7 +568,7 @@ func TestCommandSide_ExternalLoginCheck(t *testing.T) {
 								"externaluser1",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserRemovedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -594,7 +594,7 @@ func TestCommandSide_ExternalLoginCheck(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",

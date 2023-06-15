@@ -127,7 +127,7 @@ func TestCommands_AddMachineKey(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"machine",
@@ -176,7 +176,7 @@ func TestCommands_AddMachineKey(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"machine",

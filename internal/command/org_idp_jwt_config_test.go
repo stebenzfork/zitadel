@@ -96,7 +96,7 @@ func TestCommandSide_ChangeIDPJWTConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -106,7 +106,7 @@ func TestCommandSide_ChangeIDPJWTConfig(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPJWTConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -116,7 +116,7 @@ func TestCommandSide_ChangeIDPJWTConfig(t *testing.T) {
 								"auth",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigRemovedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -143,7 +143,7 @@ func TestCommandSide_ChangeIDPJWTConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -153,7 +153,7 @@ func TestCommandSide_ChangeIDPJWTConfig(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPJWTConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -188,7 +188,7 @@ func TestCommandSide_ChangeIDPJWTConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -198,7 +198,7 @@ func TestCommandSide_ChangeIDPJWTConfig(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPJWTConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",

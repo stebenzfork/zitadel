@@ -304,7 +304,7 @@ func TestCommandSide_ChangeIDPConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"config1",
@@ -314,7 +314,7 @@ func TestCommandSide_ChangeIDPConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"clientid1",
@@ -441,7 +441,7 @@ func TestCommands_RemoveIDPConfig(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"idp1",
@@ -480,7 +480,7 @@ func TestCommands_RemoveIDPConfig(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"idp1",
@@ -492,7 +492,7 @@ func TestCommands_RemoveIDPConfig(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -506,7 +506,7 @@ func TestCommands_RemoveIDPConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserIDPLinkAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"idp1",

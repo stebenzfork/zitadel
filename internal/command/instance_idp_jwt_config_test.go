@@ -79,7 +79,7 @@ func TestCommandSide_ChangeDefaultIDPJWTConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -89,7 +89,7 @@ func TestCommandSide_ChangeDefaultIDPJWTConfig(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPJWTConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -99,7 +99,7 @@ func TestCommandSide_ChangeDefaultIDPJWTConfig(t *testing.T) {
 								"auth",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigRemovedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -126,7 +126,7 @@ func TestCommandSide_ChangeDefaultIDPJWTConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -136,7 +136,7 @@ func TestCommandSide_ChangeDefaultIDPJWTConfig(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPJWTConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -171,7 +171,7 @@ func TestCommandSide_ChangeDefaultIDPJWTConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -181,7 +181,7 @@ func TestCommandSide_ChangeDefaultIDPJWTConfig(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPJWTConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",

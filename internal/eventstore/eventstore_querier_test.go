@@ -71,12 +71,12 @@ func TestCRDB_Filter(t *testing.T) {
 	for _, tt := range tests {
 		for querierName, querier := range queriers {
 			t.Run(querierName+"/"+tt.name, func(t *testing.T) {
-				t.Cleanup(cleanupEventstore)
+				t.Cleanup(cleanupEventstore(clients[querierName]))
 
 				db := eventstore.NewEventstore(
 					&eventstore.Config{
 						Querier: querier,
-						Pusher:  pushers["v3"],
+						Pusher:  pushers["v3(inmemory)"],
 					},
 				)
 
@@ -156,7 +156,7 @@ func TestCRDB_CreateInstance(t *testing.T) {
 	for _, tt := range tests {
 		for querierName, querier := range queriers {
 			t.Run(querierName+"/"+tt.name, func(t *testing.T) {
-				t.Cleanup(cleanupEventstore)
+				t.Cleanup(cleanupEventstore(clients[querierName]))
 
 				db := eventstore.NewEventstore(
 					&eventstore.Config{
@@ -169,7 +169,7 @@ func TestCRDB_CreateInstance(t *testing.T) {
 					t.Errorf("CRDB.CreateInstance() error = %v, wantErr %v", err, tt.res.wantErr)
 				}
 
-				sequenceRow := testCRDBClient.QueryRow("SELECT EXISTS(SELECT 1 FROM [SHOW SEQUENCES FROM eventstore] WHERE sequence_name like $1)", "i_"+tt.args.instanceID+"%")
+				sequenceRow := clients[querierName].QueryRow("SELECT EXISTS(SELECT 1 FROM [SHOW SEQUENCES FROM eventstore] WHERE sequence_name like $1)", "i_"+tt.args.instanceID+"%")
 				var exists bool
 				err := sequenceRow.Scan(&exists)
 				if err != nil {
@@ -245,12 +245,12 @@ func TestCRDB_LatestSequence(t *testing.T) {
 	for _, tt := range tests {
 		for querierName, querier := range queriers {
 			t.Run(querierName+"/"+tt.name, func(t *testing.T) {
-				t.Cleanup(cleanupEventstore)
+				t.Cleanup(cleanupEventstore(clients[querierName]))
 
 				db := eventstore.NewEventstore(
 					&eventstore.Config{
 						Querier: querier,
-						Pusher:  pushers["v3"],
+						Pusher:  pushers["v3(inmemory)"],
 					},
 				)
 

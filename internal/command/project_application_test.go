@@ -118,7 +118,7 @@ func TestCommandSide_ChangeApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
@@ -145,7 +145,7 @@ func TestCommandSide_ChangeApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
@@ -274,12 +274,12 @@ func TestCommandSide_DeactivateApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
 						)),
-						eventFromEventPusher(project.NewApplicationDeactivatedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationDeactivatedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 						)),
@@ -302,7 +302,7 @@ func TestCommandSide_DeactivateApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
@@ -426,7 +426,7 @@ func TestCommandSide_ReactivateApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
@@ -450,12 +450,12 @@ func TestCommandSide_ReactivateApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
 						)),
-						eventFromEventPusher(project.NewApplicationDeactivatedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationDeactivatedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 						)),
@@ -578,19 +578,19 @@ func TestCommandSide_RemoveApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
 						)),
 					),
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
 						)),
-						eventFromEventPusher(project.NewSAMLConfigAddedEvent(context.Background(),
+						eventFromCommand(project.NewSAMLConfigAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"https://test.com/saml/metadata",
@@ -626,7 +626,7 @@ func TestCommandSide_RemoveApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",

@@ -102,7 +102,7 @@ func TestCommandSide_AddAPIApplicationKey(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -111,7 +111,7 @@ func TestCommandSide_AddAPIApplicationKey(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewAPIConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -148,7 +148,7 @@ func TestCommandSide_AddAPIApplicationKey(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -157,7 +157,7 @@ func TestCommandSide_AddAPIApplicationKey(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewAPIConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",

@@ -75,7 +75,7 @@ func TestCommandSide_AddHumanOTP(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -108,7 +108,7 @@ func TestCommandSide_AddHumanOTP(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -124,7 +124,7 @@ func TestCommandSide_AddHumanOTP(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&user.NewAggregate("org1", "org1").Aggregate,
 								"org",
@@ -150,7 +150,7 @@ func TestCommandSide_AddHumanOTP(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -166,7 +166,7 @@ func TestCommandSide_AddHumanOTP(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&user.NewAggregate("org1", "org1").Aggregate,
 								"org",
@@ -174,7 +174,7 @@ func TestCommandSide_AddHumanOTP(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -184,7 +184,7 @@ func TestCommandSide_AddHumanOTP(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanOTPAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -194,7 +194,7 @@ func TestCommandSide_AddHumanOTP(t *testing.T) {
 									Crypted:    []byte("a"),
 								}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanOTPVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"agent1")),
@@ -290,7 +290,7 @@ func TestCommandSide_RemoveHumanOTP(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanOTPAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								nil,

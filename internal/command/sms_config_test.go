@@ -159,7 +159,7 @@ func TestCommandSide_ChangeSMSConfigTwilio(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMSConfigTwilioAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -197,7 +197,7 @@ func TestCommandSide_ChangeSMSConfigTwilio(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMSConfigTwilioAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -315,7 +315,7 @@ func TestCommandSide_ActivateSMSConfigTwilio(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMSConfigTwilioAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -422,7 +422,7 @@ func TestCommandSide_DeactivateSMSConfigTwilio(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMSConfigTwilioAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -432,7 +432,7 @@ func TestCommandSide_DeactivateSMSConfigTwilio(t *testing.T) {
 								&crypto.CryptoValue{},
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMSConfigTwilioActivatedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -536,7 +536,7 @@ func TestCommandSide_RemoveSMSConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSMSConfigTwilioAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,

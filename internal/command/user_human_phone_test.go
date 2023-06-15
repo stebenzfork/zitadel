@@ -84,7 +84,7 @@ func TestCommandSide_ChangeHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -98,7 +98,7 @@ func TestCommandSide_ChangeHumanPhone(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+41711234567",
@@ -127,7 +127,7 @@ func TestCommandSide_ChangeHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -141,7 +141,7 @@ func TestCommandSide_ChangeHumanPhone(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+41711234567",
@@ -187,7 +187,7 @@ func TestCommandSide_ChangeHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -201,7 +201,7 @@ func TestCommandSide_ChangeHumanPhone(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+41711234567",
@@ -243,7 +243,7 @@ func TestCommandSide_ChangeHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -394,7 +394,7 @@ func TestCommandSide_VerifyHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -427,7 +427,7 @@ func TestCommandSide_VerifyHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -441,13 +441,13 @@ func TestCommandSide_VerifyHumanPhone(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+411234567",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -484,7 +484,7 @@ func TestCommandSide_VerifyHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -498,13 +498,13 @@ func TestCommandSide_VerifyHumanPhone(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+411234567",
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPhoneCodeAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -615,7 +615,7 @@ func TestCommandSide_CreateVerificationCodeHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -629,13 +629,13 @@ func TestCommandSide_CreateVerificationCodeHumanPhone(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+411234567",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneVerifiedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 							),
@@ -658,7 +658,7 @@ func TestCommandSide_CreateVerificationCodeHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -672,7 +672,7 @@ func TestCommandSide_CreateVerificationCodeHumanPhone(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+411234567",
@@ -781,7 +781,7 @@ func TestCommandSide_PhoneVerificationCodeSent(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -795,7 +795,7 @@ func TestCommandSide_PhoneVerificationCodeSent(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+411234567",
@@ -858,7 +858,7 @@ func TestCommandSide_RemoveHumanPhone(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -872,7 +872,7 @@ func TestCommandSide_RemoveHumanPhone(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusherWithCreationDateNow(
+						eventFromCommandWithCreationDateNow(
 							user.NewHumanPhoneChangedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"+411234567",

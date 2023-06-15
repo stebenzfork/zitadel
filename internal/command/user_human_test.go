@@ -109,7 +109,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							newAddHumanEvent("password", true, true, ""),
 						),
 					),
@@ -175,7 +175,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								true,
@@ -217,7 +217,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								true,
@@ -227,7 +227,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instanceAgg.Aggregate,
@@ -300,7 +300,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -310,7 +310,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -322,7 +322,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instanceAgg.Aggregate,
@@ -384,7 +384,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -394,7 +394,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -457,7 +457,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -467,7 +467,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -531,7 +531,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								true,
@@ -541,7 +541,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								1,
@@ -595,7 +595,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								true,
@@ -605,7 +605,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								1,
@@ -659,7 +659,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								false,
@@ -669,7 +669,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								1,
@@ -723,7 +723,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								false,
@@ -733,7 +733,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								"test.ch",
@@ -776,7 +776,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								false,
@@ -786,7 +786,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"test.ch",
@@ -794,7 +794,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								1,
@@ -869,7 +869,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								true,
@@ -879,7 +879,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								1,
@@ -891,7 +891,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instanceAgg.Aggregate,
@@ -961,7 +961,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								true,
@@ -971,7 +971,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instanceAgg.Aggregate,
@@ -1040,7 +1040,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 					t,
 					expectFilter(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&userAgg.Aggregate,
 								true,
@@ -1050,7 +1050,7 @@ func TestCommandSide_AddHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewSecretGeneratorAddedEvent(
 								context.Background(),
 								&instanceAgg.Aggregate,
@@ -1228,7 +1228,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1265,7 +1265,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1275,7 +1275,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -1308,7 +1308,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1318,7 +1318,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -1392,7 +1392,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1402,7 +1402,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -1471,7 +1471,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1481,7 +1481,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -1570,7 +1570,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1580,7 +1580,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -1672,7 +1672,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1682,7 +1682,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -1771,7 +1771,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1781,7 +1781,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -1864,7 +1864,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								true,
@@ -1874,7 +1874,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								1,
@@ -1886,7 +1886,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"idpID",
@@ -1896,7 +1896,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"clientID",
@@ -1909,7 +1909,7 @@ func TestCommandSide_ImportHuman(t *testing.T) {
 								domain.OIDCMappingFieldUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIdentityProviderAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"idpID",
@@ -2085,7 +2085,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -2125,7 +2125,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -2135,7 +2135,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2173,7 +2173,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -2183,7 +2183,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2195,7 +2195,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2242,7 +2242,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -2252,7 +2252,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2264,7 +2264,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2311,7 +2311,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2321,7 +2321,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2333,7 +2333,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2356,13 +2356,13 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								"test.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								"test.ch",
@@ -2397,7 +2397,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2407,7 +2407,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2419,7 +2419,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2442,32 +2442,32 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								"test.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								"test.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainRemovedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								"test.ch",
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"test.ch",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"test.ch",
@@ -2534,7 +2534,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2544,7 +2544,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2556,7 +2556,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2639,7 +2639,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -2649,7 +2649,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2661,7 +2661,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2744,7 +2744,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("org1", "org1").Aggregate,
 								true,
@@ -2754,7 +2754,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2766,7 +2766,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2843,7 +2843,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -2853,7 +2853,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2865,7 +2865,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -2964,7 +2964,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -2974,7 +2974,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -2986,7 +2986,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -3079,7 +3079,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&user.NewAggregate("org1", "org1").Aggregate,
 								true,
@@ -3089,7 +3089,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewPasswordComplexityPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								1,
@@ -3101,7 +3101,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewLoginPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -3124,7 +3124,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"idpID",
@@ -3134,7 +3134,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"clientID",
@@ -3147,7 +3147,7 @@ func TestCommandSide_RegisterHuman(t *testing.T) {
 								domain.OIDCMappingFieldUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewIdentityProviderAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"idpID",
@@ -3298,7 +3298,7 @@ func TestCommandSide_HumanMFASkip(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -3422,7 +3422,7 @@ func TestCommandSide_HumanSignOut(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -3462,7 +3462,7 @@ func TestCommandSide_HumanSignOut(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username",
@@ -3478,7 +3478,7 @@ func TestCommandSide_HumanSignOut(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user2", "org1").Aggregate,
 								"username",

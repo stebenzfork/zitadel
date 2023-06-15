@@ -129,7 +129,7 @@ func TestCommandSide_AddOrg(t *testing.T) {
 					t,
 					expectFilterOrgDomainNotFound(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -143,7 +143,7 @@ func TestCommandSide_AddOrg(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserRemovedEvent(
 								context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
@@ -173,7 +173,7 @@ func TestCommandSide_AddOrg(t *testing.T) {
 					t,
 					expectFilterOrgDomainNotFound(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -241,7 +241,7 @@ func TestCommandSide_AddOrg(t *testing.T) {
 					t,
 					expectFilterOrgDomainNotFound(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -309,7 +309,7 @@ func TestCommandSide_AddOrg(t *testing.T) {
 					t,
 					expectFilterOrgDomainNotFound(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -380,7 +380,7 @@ func TestCommandSide_AddOrg(t *testing.T) {
 					t,
 					expectFilterOrgDomainNotFound(),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -538,7 +538,7 @@ func TestCommandSide_ChangeOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
@@ -561,7 +561,7 @@ func TestCommandSide_ChangeOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
@@ -591,24 +591,24 @@ func TestCommandSide_ChangeOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org.zitadel.ch"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org.zitadel.ch"),
@@ -643,29 +643,29 @@ func TestCommandSide_ChangeOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org.zitadel.ch"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org.zitadel.ch"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPrimarySetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org.zitadel.ch"),
@@ -756,12 +756,12 @@ func TestCommandSide_DeactivateOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgDeactivatedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate),
 						),
@@ -782,7 +782,7 @@ func TestCommandSide_DeactivateOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
@@ -810,7 +810,7 @@ func TestCommandSide_DeactivateOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
@@ -889,7 +889,7 @@ func TestCommandSide_ReactivateOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
@@ -911,12 +911,12 @@ func TestCommandSide_ReactivateOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgDeactivatedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 							),
@@ -944,12 +944,12 @@ func TestCommandSide_ReactivateOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgDeactivatedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate),
 						),
@@ -1024,7 +1024,7 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("projectID", "org1").Aggregate,
 								"ZITADEL",
@@ -1068,12 +1068,12 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 					t,
 					expectFilter(), // zitadel project check
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgRemovedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org", []string{}, false, []string{}, []*domain.UserIDPLink{}, []string{}),
@@ -1096,14 +1096,14 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 					t,
 					expectFilter(), // zitadel project check
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -1139,14 +1139,14 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 					t,
 					expectFilter(), // zitadel project check
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								true,
@@ -1179,7 +1179,7 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 					t,
 					expectFilter(), // zitadel project check
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org"),
@@ -1187,7 +1187,7 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 					),
 
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								false,
@@ -1197,7 +1197,7 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"user1",
@@ -1210,7 +1210,7 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 								"email1",
 								false,
 							),
-						), eventFromEventPusher(
+						), eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user2", "org1").Aggregate,
 								"user2",
@@ -1222,26 +1222,26 @@ func TestCommandSide_RemoveOrg(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(), &org.NewAggregate("org1").Aggregate, "domain1"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainVerifiedEvent(context.Background(), &org.NewAggregate("org1").Aggregate, "domain2"),
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserIDPLinkAddedEvent(context.Background(), &user.NewAggregate("user1", "org1").Aggregate, "config1", "display1", "id1"),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserIDPLinkAddedEvent(context.Background(), &user.NewAggregate("user2", "org1").Aggregate, "config2", "display2", "id2"),
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(), &project.NewAggregate("project1", "org1").Aggregate, "app1", "entity1", []byte{}, ""),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(), &project.NewAggregate("project2", "org1").Aggregate, "app2", "entity2", []byte{}, ""),
 						),
 					),

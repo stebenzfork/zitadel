@@ -67,7 +67,7 @@ func TestCommands_AddAccessAndRefreshToken(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserDeactivatedEvent(context.Background(),
 								&user.NewAggregate("userID", "orgID").Aggregate,
 							),
@@ -122,7 +122,7 @@ func TestCommands_AddAccessAndRefreshToken(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -136,7 +136,7 @@ func TestCommands_AddAccessAndRefreshToken(t *testing.T) {
 							1*time.Hour,
 							24*time.Hour,
 						)),
-						eventFromEventPusher(user.NewHumanRefreshTokenRemovedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenRemovedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -160,7 +160,7 @@ func TestCommands_AddAccessAndRefreshToken(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -359,7 +359,7 @@ func TestCommands_RevokeRefreshToken(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -398,7 +398,7 @@ func TestCommands_RevokeRefreshToken(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -493,7 +493,7 @@ func TestCommands_RevokeRefreshTokens(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -526,7 +526,7 @@ func TestCommands_RevokeRefreshTokens(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -542,7 +542,7 @@ func TestCommands_RevokeRefreshTokens(t *testing.T) {
 						)),
 					),
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID2",
@@ -586,7 +586,7 @@ func TestCommands_RevokeRefreshTokens(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -602,7 +602,7 @@ func TestCommands_RevokeRefreshTokens(t *testing.T) {
 						)),
 					),
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID2",
@@ -843,7 +843,7 @@ func TestCommands_renewRefreshToken(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -857,7 +857,7 @@ func TestCommands_renewRefreshToken(t *testing.T) {
 							1*time.Hour,
 							24*time.Hour,
 						)),
-						eventFromEventPusher(user.NewHumanRefreshTokenRemovedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenRemovedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -881,7 +881,7 @@ func TestCommands_renewRefreshToken(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommand(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -914,7 +914,7 @@ func TestCommands_renewRefreshToken(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusherWithCreationDateNow(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommandWithCreationDateNow(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -928,7 +928,7 @@ func TestCommands_renewRefreshToken(t *testing.T) {
 							1*time.Hour,
 							24*time.Hour,
 						)),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserDeactivatedEvent(
 								context.Background(),
 								&user.NewAggregate("userID", "orgID").Aggregate,
@@ -954,7 +954,7 @@ func TestCommands_renewRefreshToken(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusherWithCreationDateNow(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommandWithCreationDateNow(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",
@@ -968,7 +968,7 @@ func TestCommands_renewRefreshToken(t *testing.T) {
 							1*time.Hour,
 							24*time.Hour,
 						)),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanSignedOutEvent(
 								context.Background(),
 								&user.NewAggregate("userID", "orgID").Aggregate,
@@ -995,7 +995,7 @@ func TestCommands_renewRefreshToken(t *testing.T) {
 			fields: fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusherWithCreationDateNow(user.NewHumanRefreshTokenAddedEvent(
+						eventFromCommandWithCreationDateNow(user.NewHumanRefreshTokenAddedEvent(
 							context.Background(),
 							&user.NewAggregate("userID", "orgID").Aggregate,
 							"tokenID",

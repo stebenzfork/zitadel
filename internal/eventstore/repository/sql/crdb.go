@@ -167,7 +167,6 @@ func (db *CRDB) Push(ctx context.Context, commands ...eventstore.Command) (event
 
 			if err != nil {
 				logging.WithFields(
-					"aggregate", e.Aggregate().Type,
 					"aggregateId", e.Aggregate().ID,
 					"aggregateType", e.Aggregate().Type,
 					"eventType", e.Type(),

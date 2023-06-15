@@ -111,7 +111,7 @@ func TestCommandSide_AddProjectMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -127,7 +127,7 @@ func TestCommandSide_AddProjectMember(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",
@@ -162,7 +162,7 @@ func TestCommandSide_AddProjectMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -213,7 +213,7 @@ func TestCommandSide_AddProjectMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -382,7 +382,7 @@ func TestCommandSide_ChangeProjectMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",
@@ -418,7 +418,7 @@ func TestCommandSide_ChangeProjectMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",
@@ -564,7 +564,7 @@ func TestCommandSide_RemoveProjectMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",

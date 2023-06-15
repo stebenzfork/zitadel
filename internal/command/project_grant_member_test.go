@@ -109,7 +109,7 @@ func TestCommandSide_AddProjectGrantMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -125,7 +125,7 @@ func TestCommandSide_AddProjectGrantMember(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectGrantMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",
@@ -161,7 +161,7 @@ func TestCommandSide_AddProjectGrantMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -213,7 +213,7 @@ func TestCommandSide_AddProjectGrantMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -381,7 +381,7 @@ func TestCommandSide_ChangeProjectGrantMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectGrantMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",
@@ -418,7 +418,7 @@ func TestCommandSide_ChangeProjectGrantMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectGrantMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",
@@ -584,7 +584,7 @@ func TestCommandSide_RemoveProjectGrantMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectGrantMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",

@@ -367,7 +367,7 @@ func TestCommandSide_AddOrgMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -383,7 +383,7 @@ func TestCommandSide_AddOrgMember(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMemberAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"user1",
@@ -413,7 +413,7 @@ func TestCommandSide_AddOrgMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -459,7 +459,7 @@ func TestCommandSide_AddOrgMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -619,7 +619,7 @@ func TestCommandSide_ChangeOrgMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMemberAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"user1",
@@ -654,7 +654,7 @@ func TestCommandSide_ChangeOrgMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewMemberAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"user1",
@@ -799,7 +799,7 @@ func TestCommandSide_RemoveOrgMember(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectMemberAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"user1",

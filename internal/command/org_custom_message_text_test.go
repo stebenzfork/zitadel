@@ -155,7 +155,7 @@ func TestCommandSide_SetCustomMessageText(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -164,7 +164,7 @@ func TestCommandSide_SetCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -173,7 +173,7 @@ func TestCommandSide_SetCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -182,7 +182,7 @@ func TestCommandSide_SetCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -191,7 +191,7 @@ func TestCommandSide_SetCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -200,7 +200,7 @@ func TestCommandSide_SetCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -209,7 +209,7 @@ func TestCommandSide_SetCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -386,7 +386,7 @@ func TestCommandSide_RemoveCustomMessageText(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -395,7 +395,7 @@ func TestCommandSide_RemoveCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -404,7 +404,7 @@ func TestCommandSide_RemoveCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -413,7 +413,7 @@ func TestCommandSide_RemoveCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -422,7 +422,7 @@ func TestCommandSide_RemoveCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -431,7 +431,7 @@ func TestCommandSide_RemoveCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",
@@ -440,7 +440,7 @@ func TestCommandSide_RemoveCustomMessageText(t *testing.T) {
 								language.English,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewCustomTextSetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"Template",

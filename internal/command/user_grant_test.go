@@ -63,7 +63,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -77,7 +77,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserRemovedEvent(
 								context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
@@ -107,7 +107,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -121,14 +121,14 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1",
@@ -156,7 +156,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -170,7 +170,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -198,7 +198,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -212,7 +212,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -241,7 +241,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -255,7 +255,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -285,7 +285,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -299,14 +299,14 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey1",
@@ -314,7 +314,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewGrantAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectgrant1",
@@ -345,7 +345,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -359,14 +359,14 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey1",
@@ -374,7 +374,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewGrantAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectgrant1",
@@ -405,7 +405,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -419,14 +419,14 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey1",
@@ -475,7 +475,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -489,14 +489,14 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey1",
@@ -504,7 +504,7 @@ func TestCommandSide_AddUserGrant(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewGrantAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectgrant1",
@@ -613,7 +613,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -691,7 +691,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -723,7 +723,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -732,7 +732,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -746,7 +746,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewUserRemovedEvent(
 								context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
@@ -779,7 +779,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -788,7 +788,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -802,14 +802,14 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1",
@@ -840,7 +840,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -849,7 +849,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -863,7 +863,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -895,7 +895,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -904,7 +904,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -918,7 +918,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -951,7 +951,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -960,7 +960,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -974,14 +974,14 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey1",
@@ -989,7 +989,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewGrantAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectgrant1",
@@ -1023,7 +1023,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -1032,7 +1032,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -1046,14 +1046,14 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey1",
@@ -1061,7 +1061,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey2",
@@ -1109,7 +1109,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -1118,7 +1118,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"username1",
@@ -1132,14 +1132,14 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey1",
@@ -1147,7 +1147,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"rolekey2",
@@ -1155,7 +1155,7 @@ func TestCommandSide_ChangeUserGrant(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewGrantAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectgrant1",
@@ -1291,14 +1291,14 @@ func TestCommandSide_DeactivateUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
 								"project1",
 								"", []string{"rolekey1"}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantRemovedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -1323,7 +1323,7 @@ func TestCommandSide_DeactivateUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -1348,14 +1348,14 @@ func TestCommandSide_DeactivateUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
 								"project1",
 								"", []string{"rolekey1"}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantDeactivatedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate),
 						),
@@ -1377,7 +1377,7 @@ func TestCommandSide_DeactivateUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -1495,14 +1495,14 @@ func TestCommandSide_ReactivateUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
 								"project1",
 								"", []string{"rolekey1"}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantRemovedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -1527,14 +1527,14 @@ func TestCommandSide_ReactivateUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
 								"project1",
 								"", []string{"rolekey1"}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantDeactivatedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate),
 						),
@@ -1556,7 +1556,7 @@ func TestCommandSide_ReactivateUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -1581,14 +1581,14 @@ func TestCommandSide_ReactivateUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
 								"project1",
 								"", []string{"rolekey1"}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantDeactivatedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate),
 						),
@@ -1688,14 +1688,14 @@ func TestCommandSide_RemoveUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
 								"project1",
 								"", []string{"rolekey1"}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantRemovedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -1720,14 +1720,14 @@ func TestCommandSide_RemoveUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
 								"project1",
 								"", []string{"rolekey1"}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantDeactivatedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate),
 						),
@@ -1749,7 +1749,7 @@ func TestCommandSide_RemoveUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -1784,7 +1784,7 @@ func TestCommandSide_RemoveUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -1890,14 +1890,14 @@ func TestCommandSide_BulkRemoveUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
 								"project1",
 								"", []string{"rolekey1"}),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantRemovedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -1922,7 +1922,7 @@ func TestCommandSide_BulkRemoveUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org").Aggregate,
 								"user1",
@@ -1947,7 +1947,7 @@ func TestCommandSide_BulkRemoveUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -1956,7 +1956,7 @@ func TestCommandSide_BulkRemoveUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant2", "org1").Aggregate,
 								"user2",
@@ -1993,7 +1993,7 @@ func TestCommandSide_BulkRemoveUserGrant(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",
@@ -2002,7 +2002,7 @@ func TestCommandSide_BulkRemoveUserGrant(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant2", "org1").Aggregate,
 								"user2",

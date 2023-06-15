@@ -53,7 +53,7 @@ func TestCommandSide_AddDefaultMailTemplatePolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewMailTemplateAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								[]byte("template"),
@@ -181,7 +181,7 @@ func TestCommandSide_ChangeDefaultMailTemplatePolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewMailTemplateAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								[]byte("template"),
@@ -206,7 +206,7 @@ func TestCommandSide_ChangeDefaultMailTemplatePolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewMailTemplateAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								[]byte("template"),

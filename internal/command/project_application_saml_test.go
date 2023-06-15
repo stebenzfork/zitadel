@@ -113,7 +113,7 @@ func TestCommandSide_AddSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -143,7 +143,7 @@ func TestCommandSide_AddSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -176,7 +176,7 @@ func TestCommandSide_AddSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -234,7 +234,7 @@ func TestCommandSide_AddSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -293,7 +293,7 @@ func TestCommandSide_AddSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -459,14 +459,14 @@ func TestCommandSide_ChangeSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -504,14 +504,14 @@ func TestCommandSide_ChangeSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -549,14 +549,14 @@ func TestCommandSide_ChangeSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -615,14 +615,14 @@ func TestCommandSide_ChangeSAMLApplication(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewApplicationAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
 								"app",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",

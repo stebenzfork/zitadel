@@ -68,7 +68,7 @@ func TestCommands_AddPersonalAccessToken(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"machine",
@@ -163,7 +163,7 @@ func TestCommands_AddPersonalAccessToken(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"machine",
@@ -211,7 +211,7 @@ func TestCommands_AddPersonalAccessToken(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"machine",
@@ -321,7 +321,7 @@ func TestCommands_RemovePersonalAccessToken(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewPersonalAccessTokenAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"token1",

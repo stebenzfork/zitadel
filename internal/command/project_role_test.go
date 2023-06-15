@@ -39,14 +39,14 @@ func TestCommandSide_AddProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1",
@@ -76,7 +76,7 @@ func TestCommandSide_AddProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -105,7 +105,7 @@ func TestCommandSide_AddProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -146,7 +146,7 @@ func TestCommandSide_AddProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -235,14 +235,14 @@ func TestCommandSide_BulkAddProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1",
@@ -274,7 +274,7 @@ func TestCommandSide_BulkAddProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -307,7 +307,7 @@ func TestCommandSide_BulkAddProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -360,7 +360,7 @@ func TestCommandSide_BulkAddProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -474,14 +474,14 @@ func TestCommandSide_ChangeProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
 								domain.PrivateLabelingSettingUnspecified,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1",
@@ -511,7 +511,7 @@ func TestCommandSide_ChangeProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -520,7 +520,7 @@ func TestCommandSide_ChangeProjectRole(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -528,7 +528,7 @@ func TestCommandSide_ChangeProjectRole(t *testing.T) {
 								"group",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -559,7 +559,7 @@ func TestCommandSide_ChangeProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -568,7 +568,7 @@ func TestCommandSide_ChangeProjectRole(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -601,7 +601,7 @@ func TestCommandSide_ChangeProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectname1", true, true, true,
@@ -610,7 +610,7 @@ func TestCommandSide_ChangeProjectRole(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -747,7 +747,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -755,7 +755,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 								"ggroup",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -780,7 +780,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -815,7 +815,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -852,7 +852,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -862,7 +862,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewGrantAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"projectgrant1",
@@ -903,7 +903,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -940,7 +940,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewRoleAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"key1",
@@ -950,7 +950,7 @@ func TestCommandSide_RemoveProjectRole(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							usergrant.NewUserGrantAddedEvent(context.Background(),
 								&usergrant.NewAggregate("usergrant1", "org1").Aggregate,
 								"user1",

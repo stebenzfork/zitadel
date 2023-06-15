@@ -79,7 +79,7 @@ func TestCommandSide_ChangeDefaultIDPOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -89,7 +89,7 @@ func TestCommandSide_ChangeDefaultIDPOIDCConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"clientid1",
@@ -108,7 +108,7 @@ func TestCommandSide_ChangeDefaultIDPOIDCConfig(t *testing.T) {
 								"scope",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigRemovedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -135,7 +135,7 @@ func TestCommandSide_ChangeDefaultIDPOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -145,7 +145,7 @@ func TestCommandSide_ChangeDefaultIDPOIDCConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"clientid1",
@@ -192,7 +192,7 @@ func TestCommandSide_ChangeDefaultIDPOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"config1",
@@ -202,7 +202,7 @@ func TestCommandSide_ChangeDefaultIDPOIDCConfig(t *testing.T) {
 								true,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewIDPOIDCConfigAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"clientid1",

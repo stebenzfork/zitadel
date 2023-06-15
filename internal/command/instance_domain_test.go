@@ -101,7 +101,7 @@ func TestCommandSide_AddInstanceDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",
@@ -399,7 +399,7 @@ func TestCommandSide_RemoveInstanceDomain(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								"domain.ch",

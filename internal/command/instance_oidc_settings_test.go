@@ -38,7 +38,7 @@ func TestCommandSide_AddOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewOIDCSettingsAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								time.Hour*1,
@@ -321,7 +321,7 @@ func TestCommandSide_ChangeOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewOIDCSettingsAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
@@ -353,7 +353,7 @@ func TestCommandSide_ChangeOIDCConfig(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewOIDCSettingsAddedEvent(
 								context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,

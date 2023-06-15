@@ -244,13 +244,13 @@ func TestCommandSide_ChangeProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
 								domain.PrivateLabelingSettingAllowLoginUserResourceOwnerPolicy),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project",
@@ -279,7 +279,7 @@ func TestCommandSide_ChangeProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -312,7 +312,7 @@ func TestCommandSide_ChangeProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -367,7 +367,7 @@ func TestCommandSide_ChangeProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -510,13 +510,13 @@ func TestCommandSide_DeactivateProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
 								domain.PrivateLabelingSettingAllowLoginUserResourceOwnerPolicy),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project",
@@ -540,13 +540,13 @@ func TestCommandSide_DeactivateProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
 								domain.PrivateLabelingSettingAllowLoginUserResourceOwnerPolicy),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectDeactivatedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate),
 						),
@@ -568,7 +568,7 @@ func TestCommandSide_DeactivateProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -686,13 +686,13 @@ func TestCommandSide_ReactivateProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
 								domain.PrivateLabelingSettingAllowLoginUserResourceOwnerPolicy),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project",
@@ -716,7 +716,7 @@ func TestCommandSide_ReactivateProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -740,13 +740,13 @@ func TestCommandSide_ReactivateProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
 								domain.PrivateLabelingSettingAllowLoginUserResourceOwnerPolicy),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectDeactivatedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate),
 						),
@@ -862,13 +862,13 @@ func TestCommandSide_RemoveProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
 								domain.PrivateLabelingSettingAllowLoginUserResourceOwnerPolicy),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectRemovedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project",
@@ -892,7 +892,7 @@ func TestCommandSide_RemoveProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -926,7 +926,7 @@ func TestCommandSide_RemoveProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -934,12 +934,12 @@ func TestCommandSide_RemoveProject(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
 						)),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -977,7 +977,7 @@ func TestCommandSide_RemoveProject(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewProjectAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"project", true, true, true,
@@ -985,12 +985,12 @@ func TestCommandSide_RemoveProject(t *testing.T) {
 						),
 					),
 					expectFilter(
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app1",
 							"app",
 						)),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app1",
@@ -999,12 +999,12 @@ func TestCommandSide_RemoveProject(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app2",
 							"app",
 						)),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app2",
@@ -1013,12 +1013,12 @@ func TestCommandSide_RemoveProject(t *testing.T) {
 								"",
 							),
 						),
-						eventFromEventPusher(project.NewApplicationAddedEvent(context.Background(),
+						eventFromCommand(project.NewApplicationAddedEvent(context.Background(),
 							&project.NewAggregate("project1", "org1").Aggregate,
 							"app3",
 							"app",
 						)),
-						eventFromEventPusher(
+						eventFromCommand(
 							project.NewSAMLConfigAddedEvent(context.Background(),
 								&project.NewAggregate("project1", "org1").Aggregate,
 								"app3",

@@ -96,7 +96,7 @@ func TestCommandSide_GenerateMachineSecret(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"user1",
@@ -231,7 +231,7 @@ func TestCommandSide_RemoveMachineSecret(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"user1",
@@ -259,7 +259,7 @@ func TestCommandSide_RemoveMachineSecret(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"user1",
@@ -269,7 +269,7 @@ func TestCommandSide_RemoveMachineSecret(t *testing.T) {
 								domain.OIDCTokenTypeBearer,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineSecretSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -394,7 +394,7 @@ func TestCommandSide_VerifyMachineSecret(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"user1",
@@ -422,7 +422,7 @@ func TestCommandSide_VerifyMachineSecret(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"user1",
@@ -432,7 +432,7 @@ func TestCommandSide_VerifyMachineSecret(t *testing.T) {
 								domain.OIDCTokenTypeBearer,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineSecretSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{
@@ -469,7 +469,7 @@ func TestCommandSide_VerifyMachineSecret(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"user1",
@@ -479,7 +479,7 @@ func TestCommandSide_VerifyMachineSecret(t *testing.T) {
 								domain.OIDCTokenTypeBearer,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewMachineSecretSetEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								&crypto.CryptoValue{

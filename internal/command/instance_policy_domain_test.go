@@ -43,7 +43,7 @@ func TestCommandSide_AddDefaultDomainPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true,
@@ -156,7 +156,7 @@ func TestCommandSide_ChangeDefaultDomainPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true,
@@ -183,7 +183,7 @@ func TestCommandSide_ChangeDefaultDomainPolicy(t *testing.T) {
 				eventstore: eventstoreExpect(
 					t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							instance.NewDomainPolicyAddedEvent(context.Background(),
 								&instance.NewAggregate("INSTANCE").Aggregate,
 								true,
@@ -194,19 +194,19 @@ func TestCommandSide_ChangeDefaultDomainPolicy(t *testing.T) {
 					),
 					// domainPolicyOrgs
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org1",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								"org2",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org2").Aggregate,
 								false,
@@ -214,13 +214,13 @@ func TestCommandSide_ChangeDefaultDomainPolicy(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewOrgAddedEvent(context.Background(),
 								&org.NewAggregate("org3").Aggregate,
 								"org3",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyAddedEvent(context.Background(),
 								&org.NewAggregate("org3").Aggregate,
 								false,
@@ -228,7 +228,7 @@ func TestCommandSide_ChangeDefaultDomainPolicy(t *testing.T) {
 								false,
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPolicyRemovedEvent(context.Background(),
 								&org.NewAggregate("org3").Aggregate,
 							),
@@ -237,20 +237,20 @@ func TestCommandSide_ChangeDefaultDomainPolicy(t *testing.T) {
 					// domainPolicyUsernames for each org
 					// org1
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPrimarySetEvent(
 								context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org1.com",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPrimarySetEvent(context.Background(),
 								&org.NewAggregate("org1").Aggregate,
 								"org1.com",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org1").Aggregate,
 								"user1",
@@ -267,20 +267,20 @@ func TestCommandSide_ChangeDefaultDomainPolicy(t *testing.T) {
 					),
 					// org3
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPrimarySetEvent(
 								context.Background(),
 								&org.NewAggregate("org3").Aggregate,
 								"org3.com",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							org.NewDomainPrimarySetEvent(context.Background(),
 								&org.NewAggregate("org3").Aggregate,
 								"org3.com",
 							),
 						),
-						eventFromEventPusher(
+						eventFromCommand(
 							user.NewHumanAddedEvent(context.Background(),
 								&user.NewAggregate("user1", "org3").Aggregate,
 								"user1",

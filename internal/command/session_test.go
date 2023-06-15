@@ -2,6 +2,7 @@ package command
 
 import (
 	"context"
+	"io"
 	"testing"
 	"time"
 
@@ -21,6 +22,121 @@ import (
 	"github.com/zitadel/zitadel/internal/repository/user"
 )
 
+func TestSessionCommands_getHumanWriteModel(t *testing.T) {
+	userAggr := &user.NewAggregate("user1", "org1").Aggregate
+
+	type fields struct {
+		eventstore        *eventstore.Eventstore
+		sessionWriteModel *SessionWriteModel
+	}
+	type res struct {
+		want *HumanWriteModel
+		err  error
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		res    res
+	}{
+		{
+			name: "missing UID",
+			fields: fields{
+				eventstore:        &eventstore.Eventstore{},
+				sessionWriteModel: &SessionWriteModel{},
+			},
+			res: res{
+				want: nil,
+				err:  caos_errs.ThrowPreconditionFailed(nil, "COMMAND-eeR2e", "Errors.User.UserIDMissing"),
+			},
+		},
+		{
+			name: "filter error",
+			fields: fields{
+				eventstore: eventstoreExpect(t,
+					expectFilterError(io.ErrClosedPipe),
+				),
+				sessionWriteModel: &SessionWriteModel{
+					UserID: "user1",
+				},
+			},
+			res: res{
+				want: nil,
+				err:  io.ErrClosedPipe,
+			},
+		},
+		{
+			name: "removed user",
+			fields: fields{
+				eventstore: eventstoreExpect(t,
+					expectFilter(
+						eventFromCommand(
+							user.NewHumanAddedEvent(context.Background(),
+								userAggr,
+								"", "", "", "", "", language.Georgian,
+								domain.GenderDiverse, "", true,
+							),
+						),
+						eventFromCommand(
+							user.NewUserRemovedEvent(context.Background(),
+								userAggr,
+								"", nil, true,
+							),
+						),
+					),
+				),
+				sessionWriteModel: &SessionWriteModel{
+					UserID: "user1",
+				},
+			},
+			res: res{
+				want: nil,
+				err:  caos_errs.ThrowPreconditionFailed(nil, "COMMAND-Df4b3", "Errors.ie4Ai.NotFound"),
+			},
+		},
+		{
+			name: "ok",
+			fields: fields{
+				eventstore: eventstoreExpect(t,
+					expectFilter(
+						eventFromCommand(
+							user.NewHumanAddedEvent(context.Background(),
+								userAggr,
+								"", "", "", "", "", language.Georgian,
+								domain.GenderDiverse, "", true,
+							),
+						),
+					),
+				),
+				sessionWriteModel: &SessionWriteModel{
+					UserID: "user1",
+				},
+			},
+			res: res{
+				want: &HumanWriteModel{
+					WriteModel: eventstore.WriteModel{
+						AggregateID:   "user1",
+						ResourceOwner: "org1",
+						Events:        []eventstore.Event{},
+					},
+					PreferredLanguage: language.Georgian,
+					Gender:            domain.GenderDiverse,
+					UserState:         domain.UserStateActive,
+				},
+				err: nil,
+			},
+		},
+	}
+	for _, tt := range tests {
+		s := &SessionCommands{
+			eventstore:        tt.fields.eventstore,
+			sessionWriteModel: tt.fields.sessionWriteModel,
+		}
+		got, err := s.gethumanWriteModel(context.Background())
+		require.ErrorIs(t, err, tt.res.err)
+		assert.Equal(t, tt.res.want, got)
+	}
+}
+
 func TestCommands_CreateSession(t *testing.T) {
 	type fields struct {
 		eventstore   *eventstore.Eventstore
@@ -29,7 +145,7 @@ func TestCommands_CreateSession(t *testing.T) {
 	}
 	type args struct {
 		ctx      context.Context
-		checks   []SessionCheck
+		checks   []SessionCommand
 		metadata map[string][]byte
 	}
 	type res struct {
@@ -124,7 +240,7 @@ func TestCommands_UpdateSession(t *testing.T) {
 		ctx          context.Context
 		sessionID    string
 		sessionToken string
-		checks       []SessionCheck
+		checks       []SessionCommand
 		metadata     map[string][]byte
 	}
 	type res struct {
@@ -156,9 +272,9 @@ func TestCommands_UpdateSession(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewAddedEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate)),
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewTokenSetEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate,
 								"tokenID")),
 					),
@@ -181,9 +297,9 @@ func TestCommands_UpdateSession(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewAddedEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate)),
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewTokenSetEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate,
 								"tokenID")),
 					),
@@ -229,7 +345,7 @@ func TestCommands_updateSession(t *testing.T) {
 	}
 	type args struct {
 		ctx      context.Context
-		checks   *SessionChecks
+		checks   *SessionCommands
 		metadata map[string][]byte
 	}
 	type res struct {
@@ -249,7 +365,7 @@ func TestCommands_updateSession(t *testing.T) {
 			},
 			args{
 				ctx: context.Background(),
-				checks: &SessionChecks{
+				checks: &SessionCommands{
 					sessionWriteModel: &SessionWriteModel{State: domain.SessionStateTerminated},
 				},
 			},
@@ -264,10 +380,10 @@ func TestCommands_updateSession(t *testing.T) {
 			},
 			args{
 				ctx: context.Background(),
-				checks: &SessionChecks{
+				checks: &SessionCommands{
 					sessionWriteModel: NewSessionWriteModel("sessionID", "org1"),
-					checks: []SessionCheck{
-						func(ctx context.Context, cmd *SessionChecks) error {
+					cmds: []SessionCommand{
+						func(ctx context.Context, cmd *SessionCommands) error {
 							return caos_errs.ThrowInternal(nil, "id", "check failed")
 						},
 					},
@@ -284,9 +400,9 @@ func TestCommands_updateSession(t *testing.T) {
 			},
 			args{
 				ctx: context.Background(),
-				checks: &SessionChecks{
+				checks: &SessionCommands{
 					sessionWriteModel: NewSessionWriteModel("sessionID", "org1"),
-					checks:            []SessionCheck{},
+					cmds:              []SessionCommand{},
 				},
 			},
 			res{
@@ -321,19 +437,19 @@ func TestCommands_updateSession(t *testing.T) {
 			},
 			args{
 				ctx: context.Background(),
-				checks: &SessionChecks{
+				checks: &SessionCommands{
 					sessionWriteModel: NewSessionWriteModel("sessionID", "org1"),
-					checks: []SessionCheck{
+					cmds: []SessionCommand{
 						CheckUser("userID"),
 						CheckPassword("password"),
 					},
 					eventstore: eventstoreExpect(t,
 						expectFilter(
-							eventFromEventPusher(
+							eventFromCommand(
 								user.NewHumanAddedEvent(context.Background(), &user.NewAggregate("userID", "org1").Aggregate,
 									"username", "", "", "", "", language.English, domain.GenderUnspecified, "", false),
 							),
-							eventFromEventPusher(
+							eventFromCommand(
 								user.NewHumanPasswordChangedEvent(context.Background(), &user.NewAggregate("userID", "org1").Aggregate,
 									&crypto.CryptoValue{
 										CryptoType: crypto.TypeHash,
@@ -420,9 +536,9 @@ func TestCommands_TerminateSession(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewAddedEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate)),
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewTokenSetEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate,
 								"tokenID")),
 					),
@@ -445,12 +561,12 @@ func TestCommands_TerminateSession(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewAddedEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate)),
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewTokenSetEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate,
 								"tokenID")),
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewTerminateEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate)),
 					),
 				),
@@ -474,9 +590,9 @@ func TestCommands_TerminateSession(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewAddedEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate)),
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewTokenSetEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate,
 								"tokenID"),
 						),
@@ -504,9 +620,9 @@ func TestCommands_TerminateSession(t *testing.T) {
 			fields{
 				eventstore: eventstoreExpect(t,
 					expectFilter(
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewAddedEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate)),
-						eventFromEventPusher(
+						eventFromCommand(
 							session.NewTokenSetEvent(context.Background(), &session.NewAggregate("sessionID", "org1").Aggregate,
 								"tokenID"),
 						),
