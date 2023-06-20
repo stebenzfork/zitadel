@@ -10,6 +10,7 @@ import (
 	"gopkg.in/square/go-jose.v2"
 
 	"github.com/zitadel/zitadel/internal/api/authz"
+	"github.com/zitadel/zitadel/internal/api/call"
 	"github.com/zitadel/zitadel/internal/crypto"
 	"github.com/zitadel/zitadel/internal/domain"
 	"github.com/zitadel/zitadel/internal/errors"
@@ -60,6 +61,7 @@ func (p *Storage) GetCertificateAndKey(ctx context.Context, usage domain.KeyUsag
 			return err
 		}
 		if certAndKey == nil {
+			ctx = call.WithTimestamp(ctx)
 			return errors.ThrowInternal(err, "SAML-8u01nks", "no certificate found")
 		}
 		return nil
@@ -198,6 +200,7 @@ func retry(retryable func() error) (err error) {
 			return nil
 		}
 		time.Sleep(retryBackoff)
+
 	}
 	return err
 }
