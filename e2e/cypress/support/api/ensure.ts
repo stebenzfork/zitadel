@@ -59,19 +59,12 @@ export function ensureSetting(
   );
 }
 
-function awaitDesired(
-  trials: number,
-  expectEntity: (entity: Entity) => boolean,
-  search: () => Cypress.Chainable<SearchResult>,
-) {
+function awaitDesired(trials: number, eventTimestamp: number, search: () => Cypress.Chainable<SearchResult>) {
   return search().then((resp) => {
-    const foundExpectedEntity = expectEntity(resp.entity);
-
-    const check = !foundExpectedEntity;
-    if (check) {
+    if (resp.viewTimeStamp < eventTimestamp) {
       expect(trials, `trying ${trials} more times`).to.be.greaterThan(0);
       cy.wait(1000);
-      return awaitDesired(trials - 1, expectEntity, search);
+      return awaitDesired(trials - 1, eventTimestamp, search);
     }
   });
 }
@@ -86,40 +79,24 @@ export function ensureSomething(
   mapId?: (body: any) => string,
   orgId?: string,
 ): Cypress.Chainable<string> {
-  return search()
-    .then((sRes) => {
-      if (expectEntity(sRes.entity)) {
-        return cy.wrap(sRes.id);
-      }
-
-      return cy
-        .request({
-          method: ensureMethod,
-          url: apiPath(sRes.entity),
-          headers: requestHeaders(token, orgId),
-          body: body,
-          failOnStatusCode: false,
-          followRedirect: false,
-        })
-        .then((cRes) => {
-          expect(cRes.status).to.equal(200);
-          return mapId ? mapId(cRes.body) : undefined;
+  return search().then((sRes) => {
+    if (expectEntity(sRes.entity)) {
+      return cy.wrap(sRes.id);
+    }
+    return cy
+      .request({
+        method: ensureMethod,
+        url: apiPath(sRes.entity),
+        headers: requestHeaders(token, orgId),
+        body: body,
+        followRedirect: false,
+      })
+      .then((cRes) => {
+        expect(cRes.status).to.equal(200);
+        const id = mapId ? mapId(cRes.body) : undefined;
+        return awaitDesired(90, cRes.body.details.changeDate || cRes.body.details.creationDate, search).then(() => {
+          return cy.wrap(id);
         });
-    })
-    .then((id) => {
-      return awaitDesired(90, (entity) => {
-        switch (ensureMethod) {
-          case 'POST':
-            return entity.id === id
-          case 'DELETE':
-            return !entity
-          case 'PUT':
-            return expectEntity(entity)
-          default:
-            return false
-        }
-      }, search).then(() => {
-        return cy.wrap(id);
       });
-    });
+  });
 }
