@@ -28,14 +28,15 @@ describe('projects', () => {
   });
 
   describe('edit project', () => {
-    beforeEach('ensure it exists', () => {
-      cy.get<Context>('@ctx').then((ctx) => {
-        ensureProjectExists(ctx.api, testProjectNameDelete);
-        cy.visit(`/projects`);
-      });
-    });
-
     describe('remove project', () => {
+
+      beforeEach('ensure it exists', () => {
+        cy.get<Context>('@ctx').then((ctx) => {
+          ensureProjectExists(ctx.api, testProjectNameDelete);
+          cy.visit(`/projects`);
+        });
+      });
+      
       it('removes the project from list view', () => {
         const rowSelector = `tr:contains(${testProjectNameDelete})`;
         cy.get('[data-e2e="toggle-grid"]').click();
